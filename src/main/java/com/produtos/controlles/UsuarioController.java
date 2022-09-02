@@ -17,7 +17,7 @@ public class UsuarioController {
 	
 	@GetMapping("/usuario")
 	public String exibir() {
-		return "usuarios/usuario";
+		return "cadastrarClientes";
 	}
 	
 	@PostMapping(value="/usuario")

@@ -38,13 +38,22 @@ public class ProdutoController {
 	
 	@RequestMapping("/produtos")
 	public String form(Produtos produto){
-		return "produto/cadastrarProduto";
+		return "cadastrarProdutos";
 	}
 	
 	@RequestMapping("/listaProdutos")
 	@GetMapping
 	public ModelAndView listaProdutos() {
-		ModelAndView mv = new ModelAndView("produto/listaProdutos");
+		ModelAndView mv = new ModelAndView("gerenciarProdutos");
+		Iterable<Produtos> produto = produtoRepository.findAll();
+		mv.addObject("produtos", produto);
+		return mv;
+	}
+	
+	@RequestMapping("/produtos-em-estoque")
+	@GetMapping
+	public ModelAndView ProdutosEmEstoque() {
+		ModelAndView mv = new ModelAndView("products");
 		Iterable<Produtos> produto = produtoRepository.findAll();
 		mv.addObject("produtos", produto);
 		return mv;
